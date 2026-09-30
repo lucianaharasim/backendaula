@@ -1,18 +1,18 @@
 package model;
 
 public class Produto {
-    private int id;
+    private Long id;
     private String nome;
     private Double preco;
     private int quantidade;
 
-    public Produto ( String nome, Double preco, int quantidade) {
+    public Produto (Long id, String nome, Double preco, int quantidade) {
         this.id= id;
         setNome(nome);
         setPreco(preco);
         setQuantidade(quantidade);
     }
-    public int getId() {
+    public Long getId() {
         return id;
     }
     public String getNome() {
@@ -21,17 +21,23 @@ public class Produto {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    public Double setPreco(Double preco) {
+    public void setPreco(Double preco) {
         this.preco = preco;
-
     }
     public int getQuantidade(){
         return quantidade;
 
     }
+    public double getPreco(){
+        return preco;
+
+    }
     public void setQuantidade
             (int quantidade){
         this.quantidade = quantidade;
+    }
+    public void setId(Long id){
+        this.id = id;
     }
 
 }
