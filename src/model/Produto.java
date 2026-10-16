@@ -40,4 +40,11 @@ public class Produto {
         this.id = id;
     }
 
+    @Override
+    public String toString(){
+        return "Produto: id=%d, nome=%s,preco=%.2f, quantidade=%d"
+                .formatted(id, nome,preco,quantidade);
+
+    }
+
 }
