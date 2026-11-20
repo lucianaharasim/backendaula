@@ -14,7 +14,7 @@ public class ConnectionFactory {
 
     private static final String USUARIO= lerVariavel("DB_USER","root");
 
-    private static final String SENHA = lerVariavel("DB_PASSWORD","root");
+    private static final String SENHA = lerVariavel("DB_PASSWORD","");
 
     private  static String lerVariavel(String nome, String valorPadrao){
         String valor= System.getenv(nome);

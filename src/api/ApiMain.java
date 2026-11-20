@@ -21,7 +21,7 @@ public class ApiMain {
 
             config.routes.get("/api/produto", ctx -> executar(ctx, () -> ctx.json(produtoDao.listarTodos())));
 
-            config.routes.get("api/produto/{id}",ctx->executar(ctx,()->{
+            config.routes.get("/api/produto/{id}",ctx->executar(ctx,()->{
                 Long id = Long.parseLong(ctx.pathParam("id"));
                 Produto produto = produtoDao.buscarPorId(id).orElseThrow(()->
                 new NoSuchElementException("Produto não encontrado!"));
@@ -34,7 +34,7 @@ public class ApiMain {
                 ctx.status(201).json(produtoDao.criar(produto));
             }));
 
-            config.routes.put("api/produtos/{id}",ctx->executar(ctx,()->{
+            config.routes.put("api/produto/{id}",ctx->executar(ctx,()->{
                 Long id = Long.parseLong(ctx.pathParam("id"));
                 ProdutoRequest request = ctx.bodyAsClass(ProdutoRequest.class);
                 Produto produto = new Produto(id,request.nome(),request.preco(),request.quantidade());
@@ -51,7 +51,7 @@ public class ApiMain {
                 ctx.status(204);
             }));
         }).start(porta);
-        System.out.println("API disponível em htt://localhost:" + app.port());
+        System.out.println("API disponível em http://localhost:" + app.port());
     }
 
     private static void executar(Context ctx, AcaoHttp acao) {

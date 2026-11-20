@@ -52,7 +52,7 @@ public class ProdutoDao  implements  CrudDao<Produto, Long>{
     }
     @Override
     public List<Produto> listarTodos() throws SQLException {
-        String sql = "SELECT id, nome,quantidade FROM produtos ORDER BY id";
+        String sql = "SELECT id, nome, preco, quantidade FROM produtos ORDER BY id";
         List<Produto> produtos = new ArrayList<>();
         try (
                 Connection conexao = ConnectionFactory.abrirConexao();
@@ -73,7 +73,7 @@ public class ProdutoDao  implements  CrudDao<Produto, Long>{
         if (produto.getId() == null){
             throw new IllegalArgumentException("O produto precisa ter um di para ser alterado");
          }
-         String sql = "UPDATE produtos SET nome = ?,preco = ?, quantidade =?, WHERE id = ?";
+         String sql = "UPDATE produtos SET nome = ?, preco = ?, quantidade = ? WHERE id = ?";
          try(
                 Connection conexao = ConnectionFactory.abrirConexao();
                 PreparedStatement comando = conexao.prepareStatement(sql)
